@@ -15,9 +15,10 @@ return new class extends Migration
             $table->id();
             $table->string('name');
             $table->text('description');
+            $table->text('notes');
             $table->enum('severity' , ['mild' , 'moderate' , 'severe']);
+            $table->date('date_recorded')->useCurrent();
             $table->foreignId('user_id')->constrained('users')->onDelete('cascade');
-            $table->timestamps();
         });
     }
 

@@ -6,5 +6,14 @@ use Illuminate\Database\Eloquent\Model;
 
 class Symptom extends Model
 {
-    //
+    protected $fillable = [
+        'name',
+        'description',
+        'notes',
+        'severity',
+        'date_recorded',
+        'user_id'
+    ];
+
+    protected $timestamps = false;
 }
