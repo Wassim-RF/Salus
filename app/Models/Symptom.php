@@ -15,5 +15,5 @@ class Symptom extends Model
         'user_id'
     ];
 
-    protected $timestamps = false;
+    public $timestamps = false;
 }
