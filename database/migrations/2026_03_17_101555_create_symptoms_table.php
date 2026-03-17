@@ -13,6 +13,10 @@ return new class extends Migration
     {
         Schema::create('symptoms', function (Blueprint $table) {
             $table->id();
+            $table->string('name');
+            $table->text('description');
+            $table->enum('severity' , ['mild' , 'moderate' , 'severe']);
+            $table->foreignId('user_id')->constrained('users')->onDelete('cascade');
             $table->timestamps();
         });
     }
