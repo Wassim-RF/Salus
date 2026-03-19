@@ -26,6 +26,33 @@ class SymptomController extends Controller
         );
     }
 
+    public function show($id , Request $request) {
+        $user = $request->user();
+        $symptom = $user->symptoms()->find($id);
+        
+        if (!$symptom) {
+            return response()->json(
+            [
+                "success" => false,
+                "data" => [],
+                "message" => "Symptom n'existe pas."
+            ],
+            404
+        );
+        }
+
+        return response()->json(
+            [
+                "success" => true,
+                "data" => [
+                    'Symptom' => $symptom
+                ],
+                "message" => "Symptom créée avec succès"
+            ],
+            200
+        );
+    }
+
     public function store(Request $request , StoreSymptomRequest $storeSymptomRequest , SymptomServices $symptomServices) {
         $user = $request->user();
 

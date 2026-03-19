@@ -26,6 +26,7 @@ Route::middleware('auth:sanctum')->group(function() {
     /* Symptom */
     //get
     Route::get('symptoms' , [SymptomController::class , 'index']);
+    Route::get('symptoms/{id}' , [SymptomController::class , 'show']);
 
     //post
     Route::post('symptom' , [SymptomController::class , 'store']);

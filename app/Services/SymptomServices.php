@@ -20,4 +20,8 @@ class SymptomServices {
     public function deleteSymptom(int $id) {
         return Symptom::delete($id);
     }
+
+    public function showOneSymptom(int $id) {
+        return Symptom::find($id);
+    }
 }
