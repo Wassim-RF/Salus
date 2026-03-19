@@ -27,4 +27,7 @@ Route::middleware('auth:sanctum')->group(function() {
 
     //post
     Route::post('symptom' , [SymptomController::class , 'store']);
+
+    //put
+    Route::put('symptom/{id}' , [SymptomController::class , 'update']);
 });
