@@ -22,7 +22,7 @@ class SymptomController extends Controller
                 ],
                 "message" => "Symptom créée avec succès"
             ],
-            201
+            200
         );
     }
 
