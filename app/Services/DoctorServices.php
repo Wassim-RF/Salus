@@ -12,4 +12,8 @@ class DoctorServices {
     public function afficherUneDoctor(int $id) {
         return Doctor::find($id);
     }
+
+    public function searchDoctor(string $search) {
+        return Doctor::where('specialty' , $search)->orWhere('city' , 'LIKE' , "%{$search}%")->get();
+    }
 }

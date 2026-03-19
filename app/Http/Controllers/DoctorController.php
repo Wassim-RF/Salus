@@ -7,8 +7,14 @@ use Illuminate\Http\Request;
 
 class DoctorController extends Controller
 {
-    public function index(DoctorServices $doctorServices) {
-        $doctors = $doctorServices->afficherAllDoctor();
+    public function index(Request $request , DoctorServices $doctorServices) {
+        $search = $request->search;
+        if ($search) {
+            $doctors = $doctorServices->searchDoctor($search);
+        } else {
+            $doctors = $doctorServices->afficherAllDoctor();
+        }
+
 
         return response()->json(
             [
