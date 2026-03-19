@@ -31,4 +31,7 @@ Route::middleware('auth:sanctum')->group(function() {
 
     //put
     Route::put('symptom/{id}' , [SymptomController::class , 'update']);
+
+    //delete
+    Route::delete('symptom/{id}' , [SymptomController::class , 'destroy']);
 });

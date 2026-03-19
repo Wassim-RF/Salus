@@ -16,4 +16,8 @@ class SymptomServices {
     public function showAllUserSymptom($user) {
         return $user->symptoms;
     }
+
+    public function deleteSymptom(int $id) {
+        return Symptom::delete($id);
+    }
 }

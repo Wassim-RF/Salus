@@ -51,9 +51,7 @@ class SymptomController extends Controller
         );
     }
 
-    public function update($id , Request $request , UpdateSymptomRequest $updateSymptomRequest , SymptomServices $symptomServices) {
-        $user = $request->user();
-
+    public function update($id , UpdateSymptomRequest $updateSymptomRequest , SymptomServices $symptomServices) {
         $data = [
             'name' => $updateSymptomRequest->name,
             'severity' => $updateSymptomRequest->severity,
@@ -73,6 +71,19 @@ class SymptomController extends Controller
                 "message" => "Symptom créée avec succès"
             ],
             200
+        );
+    }
+
+    public function destroy($id , SymptomServices $symptomServices) {
+        $symptomServices->deleteSymptom($id);
+
+        return response()->json(
+            [
+                "success" => true,
+                "data" => [],
+                "message" => "Symptom suprimer avec succès"
+            ],
+            201
         );
     }
 }
