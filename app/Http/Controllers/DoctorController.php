@@ -53,4 +53,19 @@ class DoctorController extends Controller
             201
         );
     }
+
+    public function showSpecialities(DoctorServices $doctorServices) {
+        $specialities = $doctorServices->getSpecialties();
+
+        return response()->json(
+            [
+                "success" => true,
+                "data" => [
+                    'Specialities' => $specialities
+                ],
+                "message" => "Symptom créée avec succès"
+            ],
+            200
+        );
+    }
 }

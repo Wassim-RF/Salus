@@ -16,4 +16,28 @@ class DoctorServices {
     public function searchDoctor(string $search) {
         return Doctor::where('specialty' , $search)->orWhere('city' , 'LIKE' , "%{$search}%")->get();
     }
+
+    public static function getSpecialties() {
+    return [
+        'Cardiologist',
+        'Dermatologist',
+        'Neurologist',
+        'Orthopedist',
+        'Pediatrician',
+        'Gynecologist',
+        'Ophthalmologist',
+        'Dentist',
+        'Psychiatrist',
+        'Radiologist',
+        'Urologist',
+        'Endocrinologist',
+        'Gastroenterologist',
+        'Pulmonologist',
+        'Nephrologist',
+        'Rheumatologist',
+        'Oncologist',
+        'Hematologist',
+        'General Practitioner',
+    ];
+}
 }
