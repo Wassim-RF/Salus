@@ -51,7 +51,21 @@ class SymptomController extends Controller
         );
     }
 
-    public function update($id , UpdateSymptomRequest $updateSymptomRequest , SymptomServices $symptomServices) {
+    public function update($id , Request $request , UpdateSymptomRequest $updateSymptomRequest , SymptomServices $symptomServices) {
+        $user = $request->user();
+        $symptom = $user->symptoms()->find($id);
+
+        if (!$symptom) {
+            return response()->json(
+                [
+                    "success" => false,
+                    "data" => [],
+                    "message" => "Cette symtom n'existe pas."
+                ],
+                404
+            );
+        }
+
         $data = [
             'name' => $updateSymptomRequest->name,
             'severity' => $updateSymptomRequest->severity,
@@ -60,7 +74,7 @@ class SymptomController extends Controller
             'notes' => $updateSymptomRequest->notes
         ];
 
-        $symptom = $symptomServices->updateSymptom($id , $data);
+        $symptom = $symptomServices->updateSymptom($$symptom->id , $data);
 
         return response()->json(
             [
@@ -74,7 +88,21 @@ class SymptomController extends Controller
         );
     }
 
-    public function destroy($id , SymptomServices $symptomServices) {
+    public function destroy($id , Request $request , SymptomServices $symptomServices) {
+        $user = $request->user();
+        $symptom = $user->symptoms()->find($id);
+
+        if (!$symptom) {
+            return response()->json(
+                [
+                    "success" => false,
+                    "data" => [],
+                    "message" => "Cette symtom n'existe pas."
+                ],
+                404
+            );
+        }
+
         $symptomServices->deleteSymptom($id);
 
         return response()->json(
