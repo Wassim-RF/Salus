@@ -9,6 +9,23 @@ use Illuminate\Http\Request;
 
 class SymptomController extends Controller
 {
+    public function index(Request $request , SymptomServices $symptomServices) {
+        $user = $request->user();
+
+        $symptoms = $symptomServices->showAllUserSymptom($user);
+
+        return response()->json(
+            [
+                "success" => true,
+                "data" => [
+                    'Symptoms' => $symptoms
+                ],
+                "message" => "Symptom créée avec succès"
+            ],
+            201
+        );
+    }
+
     public function store(Request $request , StoreSymptomRequest $storeSymptomRequest , SymptomServices $symptomServices) {
         $user = $request->user();
 

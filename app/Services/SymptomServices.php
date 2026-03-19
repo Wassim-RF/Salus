@@ -12,4 +12,8 @@ class SymptomServices {
     public function updateSymptom(int $id , array $data) {
         return Symptom::find($id)->update($data);
     }
+
+    public function showAllUserSymptom($user) {
+        return $user->symptoms;
+    }
 }
