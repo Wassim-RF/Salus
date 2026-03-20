@@ -18,4 +18,8 @@ class Doctor extends Model
     protected $casts = [
         'available_days' => 'array'
     ];
+
+    public function appointment() {
+        return $this->hasMany(Appointment::class , 'doctor_id');
+    }
 }
